@@ -11,14 +11,23 @@ class BurgerController extends AbstractController
     /**
      * @return Response
      */
-    #[Route('/burgers', name: 'app_burgers_list')]
-    public function list(): Response
+    #[Route('/burgers', name: 'burger_index')]
+    public function index(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('list.html.twig');
+        $burgers = $entityManager->getRepository(\App\Entity\Burger::class)->findAll();
+        return $this->render('burger/index.html.twig', [
+            'burgers' => $burgers,
+        ]);
     }
 
-    public function show(int $id): Response
+    #[Route('/burger/create', name: 'burger_create')]
+    public function create(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('', ['id' => $id,]);
+        $burger = new \App\Entity\Burger();
+        $burger->setName('Krabby Patty');
+        $burger->setPrice(4.99);
+        $entityManager->persist($burger);
+        $entityManager->flush();
+        return new Response('Burger créé avec succès !');
     }
 }
