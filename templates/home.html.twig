@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}CRUDcroustillant{% endblock %}</title>
+</head>
+<body>
+<header>
+<nav>
+<a href="{{ path('app_home') }}">Accueil</a>
+<a href="{{ path('app_burgers_list') }}">Nos Burgers</a>
+</nav>
+</header>
+
+    <main>
+        {% block body %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ "now"|date("Y") }} CRUDcroustillant</p>
+    </footer>
+</body>
+
+</html>

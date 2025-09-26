@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Burgers - CRUDcroustillant{% endblock %}
+
+{% block body %}
+<style>
+.burgers-container { padding: 20px; font-family: sans-serif; }
+</style>
+
+<div class="burgers-container">
+    <h1>Liste des burgers</h1>
+    <p>Voici la liste de nos créations uniques ! (Le contenu sera ajouté plus tard).</p>    
+        <ul>
+        <li>Classic Croustillant</li>
+        <li>Cheesy Deluxe</li>
+        <li>Vegan Surprise</li>
+        <li>Barbarre d'élite</li>
+        <li>Le crâne d'ibrahim</li>
+        <li>Karambit doppler sapphire</li>
+    </ul>
+</div>      
+
+<img src="{{ asset('image/doakes.webp') }}" alt="doakes">
+
+{% endblock %}  
