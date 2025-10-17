@@ -1,25 +1,22 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
 
-<html>
-<head>
-<meta charset="UTF-8">
-<title>{% block title %}CRUDcroustillant{% endblock %}</title>
-</head>
-<body>
+{% block title %}CRUDcroustillant{% endblock %}
+
+{% block body %}
 <header>
 <nav>
-<a href="{{ path('app_home') }}">Accueil</a>
-<a href="{{ path('app_burgers_list') }}">Nos Burgers</a>
+    <a href="{{ path('app_home') }}">Accueil</a>
+    <a href="{{ path('burger_index') }}">Nos Burgers</a>
 </nav>
 </header>
 
-    <main>
-        {% block body %}{% endblock %}
-    </main>
+<main>
+    {# Contenu de la page d'accueil #}
+    <h1>Bienvenue sur CRUDcroustillant</h1>
+    <p>Découvrez nos burgers artisanaux.</p>
+</main>
 
-    <footer>
-        <p>&copy; {{ "now"|date("Y") }} CRUDcroustillant</p>
-    </footer>
-</body>
-
-</html>
+<footer>
+    <p>&copy; {{ "now"|date("Y") }} CRUDcroustillant</p>
+</footer>
+{% endblock %}
