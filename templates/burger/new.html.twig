@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mb-4">Créer un Nouveau Burger</h1>
+
+        {{ form_start(form) }}
+        
+        <div data-controller="sauce">
+            {{ form_row(form.name) }}
+            {{ form_row(form.price) }}
+            {{ form_row(form.sauces, {
+                'attr': {
+                    'data-sauce-target': 'sauce',
+                    'data-action': 'change->sauce#selectSauce'
+                }
+            }) }}
+            <p data-sauce-target="selected" class="text-info">Sélectionnez une sauce</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

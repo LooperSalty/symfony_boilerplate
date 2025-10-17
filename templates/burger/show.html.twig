@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Burger{% endblock %}
+
+{% block body %}
+    <h1>Burger: {{ burger.name }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ burger.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ burger.name }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ burger.price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('burger_index') }}" class="btn btn-secondary">Retour à la liste</a>
+    <a href="{{ path('burger_edit', {'id': burger.id}) }}" class="btn btn-warning">Modifier</a>
+{% endblock %}

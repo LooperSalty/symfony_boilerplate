@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Burgers{% endblock %}
+
+{% block body %}
+    <h1>Liste des Burgers</h1>
+
+    <a href="{{ path('burger_new') }}" class="btn btn-primary mb-3">Créer un nouveau burger</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for burger in burgers %}
+            <tr>
+                <td>{{ burger.id }}</td>
+                <td>{{ burger.name }}</td>
+                <td>{{ burger.price }}</td>
+                <td>
+                    <a href="{{ path('burger_show', {'id': burger.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                    <a href="{{ path('burger_edit', {'id': burger.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    <form method="post" action="{{ path('burger_delete', {'id': burger.id}) }}" style="display: inline-block">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ burger.id) }}">
+                        <button class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce burger ?')">Supprimer</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun burger trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
